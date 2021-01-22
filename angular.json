@@ -143,8 +143,5 @@
       }
     }
   },
-  "defaultProject": "pfe-insat-admin",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "pfe-insat-admin"
 }
