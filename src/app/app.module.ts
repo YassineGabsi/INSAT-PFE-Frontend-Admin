@@ -9,8 +9,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {PagesModule} from './pages/pages.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     FontAwesomeModule,
     AuthenticationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PagesModule
 ],
+
   providers: [
   ],
   bootstrap: [AppComponent]
