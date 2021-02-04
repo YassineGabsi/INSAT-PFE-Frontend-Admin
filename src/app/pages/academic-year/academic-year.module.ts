@@ -7,13 +7,19 @@ import { AddSessionComponent } from './add-session/add-session.component';
 import { AddSoutenanceComponent } from './add-soutenance/add-soutenance.component';
 import { SessionsListingComponent } from './sessions-listing/sessions-listing.component';
 import { SoutenancesListingComponent } from './soutenances-listing/soutenances-listing.component';
+import {AcademicYearComponent} from './academic-year.component';
+import { YearComponent } from './year/year.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
-  declarations: [AddYearComponent, AddSessionComponent, AddSoutenanceComponent, SessionsListingComponent, SoutenancesListingComponent],
+  declarations: [AcademicYearComponent, AddYearComponent, AddSessionComponent, AddSoutenanceComponent, SessionsListingComponent, SoutenancesListingComponent, YearComponent],
   imports: [
     CommonModule,
-    AcademicYearRoutingModule
+    AcademicYearRoutingModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class AcademicYearModule { }
