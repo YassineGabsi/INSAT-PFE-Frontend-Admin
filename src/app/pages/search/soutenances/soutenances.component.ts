@@ -13,6 +13,7 @@ export class SoutenancesComponent implements OnInit {
 
   soutenances: Soutenance[];
   loading = false;
+  p: number = 1;
 
   ngOnInit(): void {
     this.getSoutenances();

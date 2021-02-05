@@ -13,6 +13,7 @@ export class EtudiantsComponent implements OnInit {
 
   students: Student[];
   loading = false;
+  p: number = 1;
 
   ngOnInit(): void {
     this.getStudents();

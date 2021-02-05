@@ -8,7 +8,7 @@
   <th class="text-right"> Sujet</th>
   </thead>
   <tbody>
-  <tr *ngFor="let item of soutenances">
+  <tr *ngFor="let item of soutenances  | paginate: { itemsPerPage: 5, currentPage: p }">
     <td>{{item.president[0]}}</td>
     <td>{{item.room}}</td>
     <td>{{item.session}}</td>
@@ -17,3 +17,6 @@
   </tr>
   </tbody>
 </table>
+<div class="text-center mt-1">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
