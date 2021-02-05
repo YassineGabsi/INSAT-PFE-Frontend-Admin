@@ -7,6 +7,7 @@ import { SubjectRequestCardComponent } from './subject-request-card/subject-requ
 import { RequestsListingComponent } from './requests-listing/requests-listing.component';
 import {PfeSubjectRequestsComponent} from './pfe-subject-requests.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SpinnerModule} from '../../components/spinner/spinner.module';
 
 @NgModule({
   declarations: [SubjectRequestCardComponent,
@@ -19,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     PfeSubjectRequestsRoutingModule,
     NgxPaginationModule,
+    SpinnerModule,
   ]
 })
 export class PfeSubjectRequestsModule { }

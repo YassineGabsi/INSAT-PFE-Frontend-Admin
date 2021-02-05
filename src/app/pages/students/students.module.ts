@@ -8,6 +8,7 @@ import { ReadStudentsComponent } from './read-students/read-students.component';
 import {StudentsComponent} from "./students.component";
 import {FormsModule} from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SpinnerModule} from '../../components/spinner/spinner.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommonModule,
     StudentsRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SpinnerModule
   ]
 })
 export class StudentsModule { }

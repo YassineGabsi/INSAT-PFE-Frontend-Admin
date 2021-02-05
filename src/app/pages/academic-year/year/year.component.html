@@ -16,7 +16,8 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table">
+          <app-spinner *ngIf="loading"></app-spinner>
+          <table class="table" *ngIf="!loading">
             <thead class=" text-primary">
             <th>
               Year

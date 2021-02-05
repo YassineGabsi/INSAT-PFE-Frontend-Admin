@@ -9,6 +9,7 @@ import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import timeGrigPlugin from '@fullcalendar/timegrid'; 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {SpinnerModule} from '../../components/spinner/spinner.module';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -28,7 +29,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CalendarRoutingModule,
     FullCalendarModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SpinnerModule
   ]
 })
 export class CalendarModule { }

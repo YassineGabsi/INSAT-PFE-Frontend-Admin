@@ -7,6 +7,7 @@ import {ProfessorsRoutingModule} from "./professors-routing.module";
 import {ProfessorsComponent} from "./professors.component";
 import {FormsModule} from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SpinnerModule} from '../../components/spinner/spinner.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommonModule,
     ProfessorsRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SpinnerModule
   ]
 })
 export class ProfessorsModule { }

@@ -46,6 +46,12 @@ export class HomeComponent implements OnInit {
   nbNov = 0;
   nbDec = 0;
 
+  isLoadingDep = false;
+  isLoadingProf = false;
+  isLoadingSub = false;
+  isLoadingEntre = false;
+  isLoadingSout = false;
+
   public canvas: any;
   public ctx;
   public chartColor;
@@ -59,69 +65,25 @@ export class HomeComponent implements OnInit {
     this.getEntreprises();
     this.getSoutenances();
     this.chartColor = '#FFFFFF';
-
-
-
-
-    var speedCanvas = document.getElementById('speedChart');
-
-    var dataFirst = {
-      data: [0, 19, 15, 20, 30, 40, 40, 50, 25, 30, 50, 70],
-      fill: false,
-      borderColor: '#fbc658',
-      backgroundColor: 'transparent',
-      pointBorderColor: '#fbc658',
-      pointRadius: 4,
-      pointHoverRadius: 4,
-      pointBorderWidth: 8,
-    };
-
-    var dataSecond = {
-      data: [0, 5, 10, 12, 20, 27, 30, 34, 42, 45, 55, 63],
-      fill: false,
-      borderColor: '#51CACF',
-      backgroundColor: 'transparent',
-      pointBorderColor: '#51CACF',
-      pointRadius: 4,
-      pointHoverRadius: 4,
-      pointBorderWidth: 8
-    };
-
-    var speedData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [dataFirst, dataSecond]
-    };
-
-    var chartOptions = {
-      legend: {
-        display: false,
-        position: 'top'
-      }
-    };
-
-    var lineChart = new Chart(speedCanvas, {
-      type: 'line',
-      hover: false,
-      data: speedData,
-      options: chartOptions
-    });
   }
 
   getDepartments(): void {
+    this.isLoadingDep = true;
     this.departmentService.getDepartments().subscribe((data) => {
       console.log(data);
       this.departments = data;
+      this.isLoadingDep = false;
     });
   }
 
   getProfessors(): void {
+    this.isLoadingProf = true;
     this.professorsService.getAllProfessors().subscribe((data) => {
       this.nbMI = data.filter((item) => item.department === 'MI').length;
       this.nbCB = data.filter((item) => item.department === 'CB').length;
       this.nbPI = data.filter((item) => item.department === 'PI').length;
       this.nbSSLF = data.filter((item) => item.department === 'SSLF').length;
-
-
+      this.isLoadingProf = false;
       this.canvas = document.getElementById('chartEmail');
       this.ctx = this.canvas.getContext('2d');
       this.chartEmail = new Chart(this.ctx, {
@@ -187,14 +149,17 @@ export class HomeComponent implements OnInit {
           },
         }
       });
+      console.log(this.isLoadingProf);
     });
   }
 
   getSubjects(): void {
+    this.isLoadingSub = true;
     this.sujetsService.getAllSujets().subscribe((data) => {
       this.nbAccepted = data.filter((item) => item.status === 'ACCEPTED').length;
       this.nbPending = data.filter((item) => item.status === 'PENDING').length;
       this.nbRefused = data.filter((item) => item.status === 'REFUSED').length;
+      this.isLoadingSub = false;
 
       this.canvas = document.getElementById('chartSubjects');
       this.ctx = this.canvas.getContext('2d');
@@ -264,6 +229,7 @@ export class HomeComponent implements OnInit {
   }
 
   getEntreprises(): void {
+    this.isLoadingEntre = true;
     this.entreprisesService.getAllEntreprises().subscribe((data) => {
       this.nbTunisia = data.filter((item) => item.country === 'Tunisia').length;
       this.nbAbroad = data.length - this.nbTunisia;
@@ -331,10 +297,12 @@ export class HomeComponent implements OnInit {
           },
         }
       });
+      this.isLoadingEntre = false;
     });
   }
 
   getSoutenances(): void {
+    this.isLoadingSout = true;
     this.soutenancesService.getAllSoutenances().subscribe((data) => {
       data.forEach((item) => {
         const month = new Date(item.dateTime).getMonth();
@@ -414,6 +382,7 @@ export class HomeComponent implements OnInit {
           },
         }
       });
+      this.isLoadingSout = false;
     });
   }
 }

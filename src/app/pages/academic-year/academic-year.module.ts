@@ -11,6 +11,7 @@ import {AcademicYearComponent} from './academic-year.component';
 import { YearComponent } from './year/year.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SpinnerModule} from '../../components/spinner/spinner.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommonModule,
     AcademicYearRoutingModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SpinnerModule
   ]
 })
 export class AcademicYearModule { }

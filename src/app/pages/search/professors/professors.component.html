@@ -1,4 +1,5 @@
-<table class="table">
+<app-spinner *ngIf="loading"></app-spinner>
+<table class="table" *ngIf="!loading">
   <thead class=" text-primary">
   <th> ID</th>
   <th> Nom</th>

@@ -9,6 +9,7 @@ import {StudentService} from "../../../services/student.service";
 export class StudentsListingComponent implements OnInit {
   students = [];
   p: number = 1;
+  loading = false;
 
   constructor(private studentService: StudentService) { }
 
@@ -17,8 +18,12 @@ export class StudentsListingComponent implements OnInit {
   }
 
   getStudents() {
+    this.loading = true;
     this.studentService.get().subscribe(
-      result => this.students = result
+      result => {
+        this.students = result;
+        this.loading = false;
+      }
     )
   }
 

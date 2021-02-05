@@ -15,6 +15,7 @@ export class SessionsListingComponent implements OnInit {
   year: Year;
   sessionsList: any[];
   p: number = 1;
+  loading = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private yearService: YearService) {
@@ -41,11 +42,14 @@ export class SessionsListingComponent implements OnInit {
   }
 
   getSessions(): void {
+    this.loading = true;
     this.yearService.getSessions().subscribe(
       (response: any[]) => {
         this.sessionsList = response.filter( (session: Session) => session.year[0] === this.yearId );
+        this.loading = false;
       }, (err: any) => {
         console.log(err);
+        this.loading = false;
       }
     );
   }

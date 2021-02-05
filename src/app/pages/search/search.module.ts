@@ -8,6 +8,7 @@ import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { SoutenancesComponent } from './soutenances/soutenances.component';
 import { SujetsComponent } from './sujets/sujets.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SpinnerModule} from '../../components/spinner/spinner.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     CommonModule,
     SearchRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SpinnerModule
   ]
 })
 export class SearchModule { }

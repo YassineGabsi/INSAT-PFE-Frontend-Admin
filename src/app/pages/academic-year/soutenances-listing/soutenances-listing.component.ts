@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {YearService} from '../services/year.service';
 import {Session} from '../models/session.model';
@@ -14,6 +14,7 @@ export class SoutenancesListingComponent implements OnInit {
   sessionId: string;
   soutenancesList: any[];
   p: number = 1;
+  loading = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private yearService: YearService) {
@@ -34,11 +35,14 @@ export class SoutenancesListingComponent implements OnInit {
   }
 
   getSoutenances(): void {
+    this.loading = true;
     this.yearService.getSoutenances().subscribe(
       (response: any[]) => {
-        this.soutenancesList = response.filter( (soutenance: Soutenance) => soutenance.session === this.sessionId );
+        this.soutenancesList = response.filter((soutenance: Soutenance) => soutenance.session === this.sessionId);
+        this.loading = false;
       }, (err: any) => {
         console.log(err);
+        this.loading = false;
       }
     );
   }

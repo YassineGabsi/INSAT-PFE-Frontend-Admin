@@ -9,6 +9,7 @@ import { ProfessorsService } from 'src/app/services/professors.service';
 export class ProfessorsListingComponent implements OnInit {
   professors = [];
   p: number = 1;
+  loading = false;
 
   constructor(private professorsService: ProfessorsService) { }
 
@@ -16,10 +17,14 @@ export class ProfessorsListingComponent implements OnInit {
     this.getProfessors();
   }
 
-  getProfessors() {
+  getProfessors(): void {
+    this.loading = true;
     this.professorsService.get().subscribe(
-      result => this.professors = result
-    )
+      result => {
+        this.professors = result;
+        this.loading = false;
+      }
+    );
   }
 
 }

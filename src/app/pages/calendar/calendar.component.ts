@@ -18,6 +18,9 @@ export class CalendarComponent implements OnInit {
   soutenances: Array<Soutenance> = [];
   events: Array<any> = [];
   calendarOptions: CalendarOptions;
+
+  isLoading = false;
+
   @ViewChild('fullcalendar') fullcalendar: FullCalendarComponent;
 
   constructor(private calendarService: CalendarService,
@@ -26,12 +29,13 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
 
     forwardRef(() => Calendar);
-
+    this.isLoading = true;
     this.calendarService.getSoutenances().subscribe( data => {
       this.soutenances.push.apply(this.soutenances, data);
+      console.log(this.soutenances);
       for (let i = 0; i < this.soutenances.length; i++) {
         let newEvent = {
-          title: this.soutenances[i].subjectPfe.title,
+          title: this.soutenances[i].subjectPfe ? this.soutenances[i].subjectPfe.title : '',
           date: new Date(this.soutenances[i].dateTime).toISOString().slice(0, 10)
         };
         this.events.push(newEvent);
@@ -48,13 +52,9 @@ export class CalendarComponent implements OnInit {
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
       };
+      this.isLoading = false;
     });
-
-
-
   }
-
-  
 
   handleDateClick(arg) {
     alert('date click! ' + arg.dateStr)
