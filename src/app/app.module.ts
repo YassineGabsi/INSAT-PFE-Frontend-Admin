@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SocketIoConfig, SocketIoModule} from 'ngx-socket-io';
 import {JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule} from 'ngx-pagination';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {SpinnerModule} from './components/spinner/spinner.module';
 
