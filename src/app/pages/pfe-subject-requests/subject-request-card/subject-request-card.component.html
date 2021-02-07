@@ -180,7 +180,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <span>Veuillez affecter un encadreur à ce sujet: </span>
+                  <span *ngIf="!pendingSubject.professorRequested" class="text-danger">Veuillez affecter un encadreur à ce sujet: </span>
+                  <div *ngIf="pendingSubject.professorRequested">
+                    <span class="text-danger">Cet étudiant a envoyé une demande d'encadrement à: {{pendingSubject.professor.firstName}} {{pendingSubject.professor.lastName}}</span>
+                    <br>
+                    <span>Vous pouvez attendre la réponse du professeur en question ou bien affecter un autre:</span>
+                  </div>      
                   <select name="selectedProfessorEmail" id="selectedProfessorEmail" [(ngModel)]="selectedProfessor" #selectedProfessorEmail="ngModel" required>
                     <option *ngFor="let professor of possibleProfessors" [ngValue]="professor" >{{professor.firstName}} {{professor.lastName}}</option>
                   </select>
@@ -227,10 +232,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form #form="ngForm" (ngSubmit)="refuseRequest()" validate>
+      <form #refusalForm="ngForm" (ngSubmit)="refuseRequest()" validate>
       <div class="modal-body">
         <div class="card-body">
-          
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -247,7 +251,7 @@
 
                             minlength="100" required [(ngModel)]="notice"   #refusal="ngModel"></textarea>
                 </div>
-                <div *ngIf="refusal.invalid && (refusal.dirty || refusal.touched)" class="alert alert-danger alert-dismissible fade show">
+                <div *ngIf="refusal.invalid && refusal.touched" class="alert alert-danger alert-dismissible fade show">
                   <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
                     <i class="nc-icon nc-simple-remove"></i>
                   </button>
@@ -259,7 +263,7 @@
       </div>
       <div class="modal-footer ">
         <button type="button" class="btn btn-secondary btn-round" data-dismiss="modal">Annuler</button>
-        <button type="submit" [disabled]="!form.valid" class="btn btn-danger btn-round">Confirmer le refus</button>
+        <button type="submit" [disabled]="!refusalForm.valid" class="btn btn-danger btn-round">Confirmer le refus</button>
       </div>
     </form>
     </div>
