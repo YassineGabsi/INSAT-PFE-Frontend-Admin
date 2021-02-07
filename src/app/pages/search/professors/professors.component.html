@@ -1,0 +1,23 @@
+<table class="table">
+  <thead class=" text-primary">
+  <th> ID</th>
+  <th> Nom</th>
+  <th> Email</th>
+  <th> Departement</th>
+  <th> Numero de telephone</th>
+  <th class="text-right">Role</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of professors | paginate: { itemsPerPage: 5, currentPage: p }">
+    <td>{{item.professorId}}</td>
+    <td>{{item.firstName}} {{item.lastName}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.department}}</td>
+    <td>{{item.phoneNumber}}</td>
+    <td class="text-right">{{item.role}}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="text-center mt-1">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
